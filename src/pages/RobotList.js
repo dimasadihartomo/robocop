@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import {connect} from "react-redux";
+import { findAllUser} from "../actions/User";
 
-function RobotList() {
+function RobotList(props) {
+
+    useEffect(() => {
+        props.findAllUser()
+        console.log(props.data)
+    })
+
     return (
        <h1>Lists</h1>
     )
 }
 
-export default RobotList;
+const mapStateToProps = (state) => {
+    return {
+        data: state.findAllUser.data || []
+    }
+}
+
+const mapDispatchToProps = {findAllUser}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RobotList)
