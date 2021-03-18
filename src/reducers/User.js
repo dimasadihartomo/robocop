@@ -20,7 +20,7 @@ export function findUserById(state = {...initialState, data: false}, action) {
             }
         case FIND_USER_BY_ID_SUCCESS:
             return {
-                data: action.payload.data,
+                data: action.data,
                 loading: false,
                 error: null
             }
@@ -28,7 +28,7 @@ export function findUserById(state = {...initialState, data: false}, action) {
             return {
                 data: false,
                 loading: false,
-                error: action.payload.errorMessage
+                error: action.error
             }
         default:
             return {
@@ -45,7 +45,7 @@ export function findAllUser(state = initialState, action) {
             }
         case FIND_ALL_USER_SUCCESS:
             return {
-                data: action.payload.data,
+                data: action.data,
                 loading: false,
                 error: null
             }
@@ -53,7 +53,7 @@ export function findAllUser(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                error: action.payload.errorMessage
+                error: action.error
             }
         default:
             return state
@@ -70,7 +70,7 @@ export function findImgById(state = {...initialState, data: false}, action) {
             }
         case FIND_IMG_BY_ID_SUCCESS:
             return {
-                data: action.payload.data,
+                data: action.data,
                 loading: false,
                 error: null
             }
@@ -78,7 +78,7 @@ export function findImgById(state = {...initialState, data: false}, action) {
             return {
                 data: false,
                 loading: false,
-                error: action.payload.errorMessage
+                error: action.error
             }
         default:
             return {
