@@ -4,16 +4,19 @@ import { getUsers } from "../actions/userAction";
 
 function CardView({data}) {
 
+    const urlImg = "https://robohash.org/" + data.id
+
     return (
         <div className="col">
-            <div className="card h-100">
+            <div className="card h-100" style={{padding: "5%"}}>
                     <div className="card-body">
                         <h5 className="d-inline-block">{data.name}</h5>
                         <a href="#" className="btn btn-primary" style={{float: "right"}}>Get Info</a>
                         <p className="card-text">This is a longer card with supporting text below as a natural lead-in
                             to additional content. This content is a little bit longer.</p>
                     </div>
-                <img src="..." className="card-img-top" alt="..."/>
+                <img src={urlImg} className="card-img-top" alt="..." style={{width: "70%", marginLeft: "36%",
+                    marginBottom: "-6%"}}/>
             </div>
         </div>
     )
