@@ -5,7 +5,7 @@ const initialState = {
     loading:true
 }
 
-export default function(state = initialState, action) {
+export function findAllUser(state = initialState, action) {
 
     switch (action.type) {
         case FIND_ALL_USER:
@@ -17,8 +17,8 @@ export default function(state = initialState, action) {
             }
         case FIND_ALL_USER_FAILURE:
             return {
-                loading: false,
-                error: action.payload
+                error: action.payload,
+                loading: false
             }
         default:
             return state
