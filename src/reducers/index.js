@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import { findAllUser } from './userReducer'
+import { findAllUser, findUserById } from './userReducer'
 
 const rootReducer = combineReducers({
-    findAllUser
+    findAllUser, findUserById
 })
 
 export default rootReducer;

@@ -1,4 +1,4 @@
-import {FIND_ALL_USER, FIND_ALL_USER_FAILURE} from "../constants/types";
+import {FIND_ALL_USER, FIND_ALL_USER_FAILURE, FIND_USER_BY_ID, FIND_USER_BY_ID_FAILURE } from "../constants/types";
 
 const initialState = {
     data:[],
@@ -16,6 +16,26 @@ export function findAllUser(state = initialState, action) {
 
             }
         case FIND_ALL_USER_FAILURE:
+            return {
+                error: action.payload,
+                loading: false
+            }
+        default:
+            return state
+    }
+}
+
+export function findUserById(state = initialState, action) {
+
+    switch (action.type) {
+        case FIND_USER_BY_ID:
+            return {
+                ...state,
+                data: action.payload,
+                loading: false
+
+            }
+        case FIND_USER_BY_ID_FAILURE:
             return {
                 error: action.payload,
                 loading: false
