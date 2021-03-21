@@ -10,7 +10,6 @@ function RobotDetail(props) {
 
     useEffect(() => {
         props.getUserDetail(id)
-        // setData(props.user)
     })
 
     return (

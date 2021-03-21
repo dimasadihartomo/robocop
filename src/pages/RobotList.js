@@ -1,25 +1,31 @@
-import React, {useEffect} from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import React, {useEffect} from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getUsers } from "../actions/userAction";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faInfo} from "@fortawesome/free-solid-svg-icons"
 
 function CardView({data}) {
 
     const urlImg = "https://robohash.org/" + data.id
 
     return (
-        <div className="col">
-            <div className="card h-100" style={{padding: "5%"}}>
+        <div className="col" style={{marginTop: "5%"}}>
+            <div className="card h-100 shadow p-3 mb-5 bg-white rounded"
+                 style={{padding: "5%", marginLeft: "10%", backgroundColor: "#fbf8e8"}}>
                     <div className="card-body">
-                        <h5 className="d-inline-block">{data.name}</h5>
-                        <button type="button" className="btn btn-dark" style={{float: "right"}}>
-                            <Link to={`/user/${data.id}`} style={{color: "white", textDecoration: "none"}}>Get Info</Link>
+                        <h3 className="d-inline-block" style={{fontFamily: "Roboto", marginTop: "2%"}}>{data.name}</h3>
+                        <button type="button" className="rounded-circle btn default"
+                                style={{float: "right", backgroundColor: "#d13838", width: "12%"}}>
+                            <Link to={`/user/${data.id}`} style={{color: "#b36457", textDecoration: "none"}}>
+                                <FontAwesomeIcon icon={faInfo} color="#fbf8e8"/>
+                            </Link>
                         </button>
                         <p className="card-text">This is a longer card with supporting text below as a natural lead-in
                             to additional content. This content is a little bit longer.</p>
                     </div>
-                <img src={urlImg} className="card-img-top" alt="..." style={{width: "70%", marginLeft: "36%",
-                    marginBottom: "-6%"}}/>
+                <img src={urlImg} className="card-img-top" alt="..." style={{width: "80%", marginLeft: "24.5%",
+                    marginBottom: "-5%"}}/>
             </div>
         </div>
     )
