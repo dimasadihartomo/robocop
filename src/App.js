@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
         <Navbar />
-        <div className="container-fluid" style={{backgroundColor: "#c2e9f2", padding: "4% 8%"}}>
+        <div className="container-fluid" style={{backgroundColor: "#c2e9f2", padding: "1% 8%"}}>
             <Router>
                 <Switch>
                     <Route path="/" exact component={RobotList} />

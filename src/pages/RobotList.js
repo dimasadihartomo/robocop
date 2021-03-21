@@ -3,28 +3,28 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getUsers } from "../actions/userAction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faInfo} from "@fortawesome/free-solid-svg-icons"
+import {faInfo} from "@fortawesome/free-solid-svg-icons";
 
 function CardView({data}) {
 
     const urlImg = "https://robohash.org/" + data.id
 
     return (
-        <div className="col" style={{marginTop: "5%"}}>
-            <div className="card h-100 shadow p-3 mb-5 bg-white rounded"
-                 style={{padding: "5%", marginLeft: "10%", backgroundColor: "#fbf8e8"}}>
-                    <div className="card-body">
-                        <h3 className="d-inline-block" style={{fontFamily: "Roboto", marginTop: "2%"}}>{data.name}</h3>
-                        <button type="button" className="rounded-circle btn default"
+        <div className="col" style={{marginTop: "2%"}}>
+            <div className="card h-80 shadow p-3 mb-5 bg-white rounded"
+                 style={{padding: "2.5%", marginLeft: "10%", backgroundColor: "#fbf8e8"}}>
+                    <div className="card-body" style={{marginBottom: "-10%"}}>
+                        <h4 className="d-inline-block" style={{fontFamily: "Righteous", marginTop: "2%"}}>{data.name}</h4>
+                        <button className="rounded-circle btn default"
                                 style={{float: "right", backgroundColor: "#d13838", width: "12%"}}>
                             <Link to={`/user/${data.id}`} style={{color: "#b36457", textDecoration: "none"}}>
                                 <FontAwesomeIcon icon={faInfo} color="#fbf8e8"/>
                             </Link>
                         </button>
-                        <p className="card-text">This is a longer card with supporting text below as a natural lead-in
-                            to additional content. This content is a little bit longer.</p>
+                        <p className="card-text" style={{marginTop: "3%", fontStyle: "oblique", fontFamily: "Roboto"}}>
+                            "{data.company.catchPhrase}"</p>
                     </div>
-                <img src={urlImg} className="card-img-top" alt="..." style={{width: "80%", marginLeft: "24.5%",
+                <img src={urlImg} className="card-img-top" alt="..." style={{ marginLeft: "4.5%",
                     marginBottom: "-5%"}}/>
             </div>
         </div>
