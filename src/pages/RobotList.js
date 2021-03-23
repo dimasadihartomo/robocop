@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getUsers } from "../actions/userAction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faInfo} from "@fortawesome/free-solid-svg-icons";
+import {faInfo, faSearch} from "@fortawesome/free-solid-svg-icons";
 import Spinner from "../components/Spinner";
 
 function CardView({data}) {
@@ -34,14 +34,32 @@ function CardView({data}) {
 
 function RobotList (props) {
 
+    const [searchTerm, setSearchTerm] = useState("")
+
     useEffect(() => {
         props.getUsers()
     })
 
     return (
-        <div className="row row-cols-1 row-cols-md-3 g-4" >
-            {props.loading ? <Spinner /> : props.error ? props.error.message :
-                props.data.map((u, i) => <CardView key={i} data={u}/>)}
+        <div>
+            <div className="input-group rounded" style={{width: "20%", marginLeft: "80%", marginTop: "2%",
+            marginBottom: "2%"}}>
+                <input type="search" className="form-control rounded" placeholder="Search" aria-label="Search"
+                       aria-describedby="search-addon" onChange={e => {setSearchTerm((e.target.value))}}/>
+                <span className="input-group-text border-0" id="search-addon">
+                  <FontAwesomeIcon icon={faSearch}/>
+                </span>
+            </div>
+            <div className="row row-cols-1 row-cols-md-3 g-4" >
+                {props.loading ? <Spinner /> : props.error ? props.error.message :
+                    props.data.filter(u => {
+                        if (searchTerm === "") {
+                            return u
+                        } else if (u.name.toLowerCase().includes(searchTerm.toLowerCase())){
+                            return u
+                        }
+                    }).map((u, i) => <CardView key={i} data={u}/>)}
+            </div>
         </div>
     )
 }
