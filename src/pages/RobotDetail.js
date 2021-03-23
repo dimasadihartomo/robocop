@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react'
-import { connect } from 'react-redux'
+import React, {useEffect} from 'react';
+import { connect } from 'react-redux';
 import { getUserDetail } from "../actions/userAction";
 import { useParams } from "react-router";
+import {Link} from "react-router-dom";
 
 function RobotDetail(props) {
 
@@ -13,14 +14,14 @@ function RobotDetail(props) {
     })
 
     return (
-        <div className="container" style={{height: "638px"}}>
-            <div className="row">
+        <div className="container" style={{height: "515px"}}>
+            <div className="row" style={{marginTop: "4%"}}>
                 <div className="col-md-4 card card-body">
-                    <img src={urlImg} className="thumbnail" alt="Poster" />
+                    <img src={urlImg} className="img-thumbnail" alt="Poster" />
                 </div>
                 <div className="col-md-8">
-                    <h2 className="mb-4">{props.user.name}</h2>
-                    <ul className="list-group">
+                    <h2 className="mb-4" style={{marginLeft: "10%", fontFamily: "Righteous"}}>{props.user.name}</h2>
+                    <ul className="list-group list-group-item-danger" style={{marginLeft: "10%"}}>
                         <li className="list-group-item">
                             <strong>No:</strong> {props.user.id}
                         </li>
@@ -47,10 +48,18 @@ function RobotDetail(props) {
                             <strong>Website:</strong> {props.user.website}
                         </li>
                         <li className="list-group-item">
-                            <strong>Company:</strong>
+                            <strong>Company: </strong>
                             {props.user && props.user.company && props.user.company.name ? props.user.company.name: ''}
                         </li>
                     </ul>
+                    <div>
+                    <button className="rounded btn default" style={{ backgroundColor: "#d13838",
+                        marginLeft: "52.5%", marginTop: "1%"}}>
+                        <Link to={`/`} style={{color: "#fbf8e8", textDecoration: "none"}}>
+                            Hire Me
+                        </Link>
+                    </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -60,7 +69,7 @@ function RobotDetail(props) {
 const mapStateToProps = (state) => {
     return {
         error: state.findUserById.error,
-        user: state.findUserById.data || [],
+        user: state.findUserById.data,
         loading: state.findUserById.loading
     }
 }

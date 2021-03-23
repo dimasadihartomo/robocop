@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { getUsers } from "../actions/userAction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faInfo} from "@fortawesome/free-solid-svg-icons";
+import Spinner from "../components/Spinner";
 
 function CardView({data}) {
 
@@ -39,7 +40,7 @@ function RobotList (props) {
 
     return (
         <div className="row row-cols-1 row-cols-md-3 g-4" >
-            {props.loading ? "Loading..." : props.error ? props.error.message :
+            {props.loading ? <Spinner /> : props.error ? props.error.message :
                 props.data.map((u, i) => <CardView key={i} data={u}/>)}
         </div>
     )
