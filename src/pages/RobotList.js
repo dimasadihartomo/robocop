@@ -10,7 +10,7 @@ function CardView({data}) {
     const urlImg = "https://robohash.org/" + data.id
 
     return (
-        <div className="col" style={{marginTop: "2%"}}>
+        <div className="col" style={{marginTop: "5%"}}>
             <div className="card h-80 shadow p-3 mb-5 bg-white rounded"
                  style={{padding: "2.5%", marginLeft: "10%", backgroundColor: "#fbf8e8"}}>
                     <div className="card-body" style={{marginBottom: "-10%"}}>

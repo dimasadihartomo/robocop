@@ -13,9 +13,46 @@ function RobotDetail(props) {
     })
 
     return (
-        <div className="row row-cols-1 row-cols-md-3 g-4" >
-            <h1>{props.user.name}</h1>
-            <img src={urlImg} className="card-img-top" alt="..."/>
+        <div className="container" style={{height: "638px"}}>
+            <div className="row">
+                <div className="col-md-4 card card-body">
+                    <img src={urlImg} className="thumbnail" alt="Poster" />
+                </div>
+                <div className="col-md-8">
+                    <h2 className="mb-4">{props.user.name}</h2>
+                    <ul className="list-group">
+                        <li className="list-group-item">
+                            <strong>No:</strong> {props.user.id}
+                        </li>
+                        <li className="list-group-item">
+                            <strong>Username:</strong> {props.user.username}
+                        </li>
+                        <li className="list-group-item">
+                            <strong>Email:</strong> {props.user.email}
+                        </li>
+                        <li className="list-group-item">
+                            <strong>Address: </strong>
+                            {props.user && props.user.address && props.user.address.street ? props.user.address.street: ''}
+                            , {props.user && props.user.address && props.user.address.suite ? props.user.address.suite: ''}
+                            , {props.user && props.user.address && props.user.address.city ? props.user.address.city: ''}
+                        </li>
+                        <li className="list-group-item">
+                            <strong>Zipcode: </strong>
+                            {props.user && props.user.address && props.user.address.zipcode ? props.user.address.zipcode: ''}
+                        </li>
+                        <li className="list-group-item">
+                            <strong>Phone:</strong> {props.user.phone}
+                        </li>
+                        <li className="list-group-item">
+                            <strong>Website:</strong> {props.user.website}
+                        </li>
+                        <li className="list-group-item">
+                            <strong>Company:</strong>
+                            {props.user && props.user.company && props.user.company.name ? props.user.company.name: ''}
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     )
 }
@@ -23,7 +60,7 @@ function RobotDetail(props) {
 const mapStateToProps = (state) => {
     return {
         error: state.findUserById.error,
-        user: state.findUserById.data,
+        user: state.findUserById.data || [],
         loading: state.findUserById.loading
     }
 }
